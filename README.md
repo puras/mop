@@ -39,13 +39,12 @@ uv add mop
 
 ```
 mop/
-├── core/                # Core functionality
-│   ├── conf/            # Configuration management
-│   ├── db/              # Database connections
-│   ├── entity/          # Base entity class
-│   ├── error/           # Error handling
-│   ├── logging/         # Logging configuration
-│   └── response/        # Response formatting
+├── conf/                # Configuration management
+├── db/                  # Database connections
+├── entity/              # Base entity class
+├── error/               # Error handling
+├── logging/             # Logging configuration
+├── response/            # Response formatting
 ├── crud/                # CRUD operations
 ├── util/                # Utility functions
 └── snowflake.py         # Snowflake ID generation

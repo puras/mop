@@ -39,13 +39,12 @@ uv add mop
 
 ```
 mop/
-├── core/                # 核心功能
-│   ├── conf/            # 配置管理
-│   ├── db/              # 数据库连接
-│   ├── entity/          # 基础实体类
-│   ├── error/           # 错误处理
-│   ├── logging/         # 日志配置
-│   └── response/        # 响应格式化
+├── conf/                # 配置管理
+├── db/                  # 数据库连接
+├── entity/              # 基础实体类
+├── error/               # 错误处理
+├── logging/             # 日志配置
+├── response/            # 响应格式化
 ├── crud/                # CRUD 操作
 ├── util/                # 工具函数
 └── snowflake.py         # 雪花 ID 生成
