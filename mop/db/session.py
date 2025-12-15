@@ -4,7 +4,7 @@ from fastapi import Depends
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 
-from mop.core.conf import settings
+from mop.conf import settings
 
 engine = create_engine(
     settings.DATABASE_URI,

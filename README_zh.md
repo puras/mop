@@ -56,7 +56,7 @@ mop/
 ### 1. 配置
 
 ```python
-from mop.core.conf import settings
+from mop.conf import settings
 
 # 访问配置设置
 print(settings.APP_NAME)
@@ -66,7 +66,7 @@ print(settings.DATABASE_URL)
 ### 2. 数据库设置
 
 ```python
-from mop.core.db import session, async_session
+from mop.db import session, async_session
 from sqlalchemy import select
 from your_model import User
 
@@ -85,12 +85,13 @@ async with async_session() as db:
 ### 3. 创建模型
 
 ```python
-from mop.core.entity import Entity
+from mop.entity import Entity
 from sqlalchemy import Column, String
+
 
 class User(Entity):
     __tablename__ = "users"
-    
+
     username = Column(String(50), unique=True, index=True)
     email = Column(String(100), unique=True, index=True)
 ```
@@ -98,7 +99,7 @@ class User(Entity):
 ### 4. 错误处理
 
 ```python
-from mop.core.error import BusinessError, ErrCode
+from mop.error import BusinessError, ErrCode
 
 # 抛出业务错误
 raise BusinessError(ErrCode.USER_NOT_FOUND, "用户未找到")
@@ -107,7 +108,7 @@ raise BusinessError(ErrCode.USER_NOT_FOUND, "用户未找到")
 ### 5. 日志记录
 
 ```python
-from mop.core.logging import logger
+from mop.logging import logger
 
 # 记录日志
 logger.info("用户登录", user_id=123)
@@ -117,15 +118,17 @@ logger.error("处理请求失败", error="无效输入")
 ### 6. 响应格式化
 
 ```python
-from mop.core.response import Response, PageResponse
+from mop.response import Response, PageResponse
 from fastapi import FastAPI
 
 app = FastAPI()
+
 
 @app.get("/users")
 async def get_users():
     users = [{"id": 1, "name": "张三"}, {"id": 2, "name": "李四"}]
     return Response(data=users, message="成功")
+
 
 @app.get("/users/page")
 async def get_users_page():

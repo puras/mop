@@ -2,7 +2,7 @@ from typing import Optional, Any, TypeVar, Generic
 
 from pydantic import BaseModel, ConfigDict
 
-from mop.core.error import ErrCode, BizError
+from mop.error import ErrCode, BizError
 
 DataT = TypeVar("DataT")
 

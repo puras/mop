@@ -1,6 +1,6 @@
 from sqlalchemy.orm import declared_attr, declarative_base
 
-from mop.core.conf import settings
+from mop.conf import settings
 from mop.util.strings import to_underline
 
 

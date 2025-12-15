@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import Column, String, Boolean, DateTime, text, Integer
 
-from mop.core.db import Base
+from mop.db import Base
 from mop.snowflake import IDWorker
 
 

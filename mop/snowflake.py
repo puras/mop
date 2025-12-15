@@ -47,7 +47,7 @@ import os
 import pathlib
 import time
 
-from mop.core.conf import settings
+from mop.conf import settings
 
 # 64位ID的划分，其中有22位自由分配
 WORKER_ID_BITS = 7  # 机器标识，7bit

@@ -56,7 +56,7 @@ mop/
 ### 1. Configuration
 
 ```python
-from mop.core.conf import settings
+from mop.conf import settings
 
 # Access configuration settings
 print(settings.APP_NAME)
@@ -66,7 +66,7 @@ print(settings.DATABASE_URL)
 ### 2. Database Setup
 
 ```python
-from mop.core.db import session, async_session
+from mop.db import session, async_session
 from sqlalchemy import select
 from your_model import User
 
@@ -85,12 +85,13 @@ async with async_session() as db:
 ### 3. Creating Models
 
 ```python
-from mop.core.entity import Entity
+from mop.entity import Entity
 from sqlalchemy import Column, String
+
 
 class User(Entity):
     __tablename__ = "users"
-    
+
     username = Column(String(50), unique=True, index=True)
     email = Column(String(100), unique=True, index=True)
 ```
@@ -98,7 +99,7 @@ class User(Entity):
 ### 4. Error Handling
 
 ```python
-from mop.core.error import BusinessError, ErrCode
+from mop.error import BusinessError, ErrCode
 
 # Raise business error
 raise BusinessError(ErrCode.USER_NOT_FOUND, "User not found")
@@ -107,7 +108,7 @@ raise BusinessError(ErrCode.USER_NOT_FOUND, "User not found")
 ### 5. Logging
 
 ```python
-from mop.core.logging import logger
+from mop.logging import logger
 
 # Log messages
 logger.info("User logged in", user_id=123)
@@ -117,15 +118,17 @@ logger.error("Failed to process request", error="Invalid input")
 ### 6. Response Formatting
 
 ```python
-from mop.core.response import Response, PageResponse
+from mop.response import Response, PageResponse
 from fastapi import FastAPI
 
 app = FastAPI()
+
 
 @app.get("/users")
 async def get_users():
     users = [{"id": 1, "name": "John"}, {"id": 2, "name": "Jane"}]
     return Response(data=users, message="Success")
+
 
 @app.get("/users/page")
 async def get_users_page():

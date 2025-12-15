@@ -2,7 +2,7 @@ import argparse
 
 from ascii_colors import ASCIIColors
 
-from mop.core.conf import settings
+from mop.conf import settings
 from mop import __version__ as core_version
 
 

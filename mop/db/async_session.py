@@ -4,7 +4,7 @@ from fastapi import Depends
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 
-from mop.core.conf import settings
+from mop.conf import settings
 
 async_engine = create_async_engine(
     settings.ASYNC_DATABASE_URI,

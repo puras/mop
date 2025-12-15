@@ -3,9 +3,9 @@ from typing import Generic, TypeVar
 from sqlalchemy import select, func
 
 from .page import ListSlice
-from mop.core.db import AsyncSessionLocal, SessionLocal
-from mop.core.entity import BaseEntity
-from mop.core.error import DATA_NOT_FOUND, BizError
+from mop.db import AsyncSessionLocal, SessionLocal
+from mop.entity import BaseEntity
+from mop.error import DATA_NOT_FOUND, BizError
 
 T = TypeVar("T", bound=BaseEntity)
 

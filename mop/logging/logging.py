@@ -9,7 +9,7 @@ from typing import List, Any
 
 import structlog
 
-from mop.core.conf import settings, Environment
+from mop.conf import settings, Environment
 
 if not os.path.exists(settings.LOG_DIR):
     os.makedirs(settings.LOG_DIR)
