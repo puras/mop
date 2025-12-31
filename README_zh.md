@@ -17,13 +17,13 @@ MoP 是一个轻量级的 Python 后端框架，基于 FastAPI 和 SQLAlchemy �
 ## 安装
 
 ```bash
-pip install mop
+pip install moss-mop
 ```
 
 或者使用 uv：
 
 ```bash
-uv add mop
+uv add moss-mop
 ```
 
 ## 要求

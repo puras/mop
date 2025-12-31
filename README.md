@@ -17,13 +17,13 @@ MoP is a lightweight Python backend framework built on FastAPI and SQLAlchemy, p
 ## Installation
 
 ```bash
-pip install mop
+pip install moss-mop
 ```
 
 Or using uv:
 
 ```bash
-uv add mop
+uv add moss-mop
 ```
 
 ## Requirements

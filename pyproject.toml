@@ -1,7 +1,7 @@
 [project]
-name = "mop"
+name = "moss-mop"
 version = "0.1.0"
-description = "Add your description here"
+description = "Lightweight FastAPI + SQLAlchemy backend toolkit with logging, CRUD, and utilities"
 requires-python = ">=3.12"
 dependencies = [
     "ascii-colors>=0.11.6",
