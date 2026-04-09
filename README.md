@@ -218,6 +218,12 @@ write_file("test.txt", "Hello, World!")
 
 ## Changelog
 
+### Version 0.1.1 (2026-04-09)
+
+#### Changed
+- Entity ID type changed from Integer to String(32) for Snowflake ID compatibility
+- Package name updated to moss-mop
+
 ### Version 0.1.0 (2025-12-15)
 
 #### Added

@@ -8,7 +8,7 @@ from mop.snowflake import IDWorker
 
 class BaseEntity(Base):
     __abstract__ = True
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(String(32), primary_key=True, index=True)
     tenant_id = Column(String(32), nullable=False)
     deleted = Column(Boolean, nullable=False, server_default=text("false"))
     created_by = Column(String(32), nullable=True)
