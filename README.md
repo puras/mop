@@ -218,6 +218,11 @@ write_file("test.txt", "Hello, World!")
 
 ## Changelog
 
+### Version 0.1.2 (2026-04-15)
+
+#### Fixed
+- Entity ID field ensures string type
+
 ### Version 0.1.1 (2026-04-09)
 
 #### Changed
