@@ -19,7 +19,7 @@ class BaseEntity(Base):
     deleted_at = Column(DateTime, nullable=True)
 
     def default_created(self):
-        self.id = IDWorker.gen_id()
+        self.id = str(IDWorker.gen_id())
         self.tenant_id = '000000'
 
     def update_attrs(self, other):
