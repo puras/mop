@@ -14,7 +14,18 @@ class CrudBiz(Generic[T]):
     def __init__(self, model: type[T]):
         self.model = model
 
-    def sync_find_all(self, **kwargs):
+    def _apply_order_by(self, query, order_by: dict[str, str] = None):
+        if order_by:
+            for field, direction in order_by.items():
+                if hasattr(self.model, field):
+                    col = getattr(self.model, field)
+                    if direction == "desc":
+                        query = query.order_by(col.desc())
+                    else:
+                        query = query.order_by(col.asc())
+        return query
+
+    def sync_find_all(self, order_by: dict[str, str] = None, **kwargs):
         filters = [self.model.deleted == False]
 
         for key, value in kwargs.items():
@@ -23,7 +34,9 @@ class CrudBiz(Generic[T]):
 
         with SessionLocal() as db:
             try:
-                ret = db.execute(select(self.model).where(*filters))
+                query = select(self.model).where(*filters)
+                query = self._apply_order_by(query, order_by)
+                ret = db.execute(query)
                 items = ret.scalars().all()
                 return items
             finally:
@@ -41,7 +54,7 @@ class CrudBiz(Generic[T]):
             finally:
                 db.close()
 
-    async def find_all(self, **kwargs):
+    async def find_all(self, order_by: dict[str, str] = None, **kwargs):
         filters = [self.model.deleted == False]
 
         for key, value in kwargs.items():
@@ -50,7 +63,9 @@ class CrudBiz(Generic[T]):
 
         async with AsyncSessionLocal() as db:
             try:
-                ret = await db.execute(select(self.model).where(*filters))
+                query = select(self.model).where(*filters)
+                query = self._apply_order_by(query, order_by)
+                ret = await db.execute(query)
                 items = ret.scalars().all()
                 return items
             finally:
@@ -74,7 +89,7 @@ class CrudBiz(Generic[T]):
         cnt = await db.execute(select(func.count(primary_column)).where(*filters))
         return cnt.scalar()
 
-    async def find_by(self, page_num: int = 1, page_size: int = 100, **kwargs):
+    async def find_by(self, page_num: int = 1, page_size: int = 100, order_by: dict[str, str] = None, **kwargs):
         filters = [self.model.deleted == False]
 
         for key, value in kwargs.items():
@@ -84,11 +99,10 @@ class CrudBiz(Generic[T]):
         skip = (page_num - 1) * page_size
         async with AsyncSessionLocal() as db:
             try:
-                print(filters)
+                query = select(self.model).where(*filters)
+                query = self._apply_order_by(query, order_by)
                 total = await self._count_by(db, *filters)
-                ret = await db.execute(
-                    select(self.model).where(*filters).offset(skip).limit(page_size)
-                )
+                ret = await db.execute(query.offset(skip).limit(page_size))
                 items = ret.scalars().all()
                 return ListSlice(
                     items=items, total=total, page_num=page_num, page_size=page_size
@@ -108,7 +122,7 @@ class CrudBiz(Generic[T]):
             finally:
                 await db.close()
 
-    async def find_one(self, **kwargs):
+    async def find_one(self, order_by: dict[str, str] = None, **kwargs):
         filters = [self.model.deleted == False]
 
         for key, value in kwargs.items():
@@ -117,7 +131,9 @@ class CrudBiz(Generic[T]):
 
         async with AsyncSessionLocal() as db:
             try:
-                ret = await db.execute(select(self.model).where(*filters))
+                query = select(self.model).where(*filters)
+                query = self._apply_order_by(query, order_by)
+                ret = await db.execute(query)
                 item = ret.scalars().first()
                 return item
             finally:

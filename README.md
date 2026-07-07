@@ -218,6 +218,11 @@ write_file("test.txt", "Hello, World!")
 
 ## Changelog
 
+### Version 0.1.3 (2026-07-07)
+
+#### Added
+- CRUD operations support multi-field sorting with `order_by` parameter
+
 ### Version 0.1.2 (2026-04-15)
 
 #### Fixed
