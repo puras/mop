@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     # 基础配置
     PROJECT_NAME: str = "MOSS"
     PROJECT_DESCRIPTION: str = ""
-    VERSION: str = "0.1.0"
+    VERSION: str = "0.1.4"
     DEBUG: bool = True
     ENVIRONMENT = get_environment()
 

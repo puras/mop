@@ -218,6 +218,11 @@ write_file("test.txt", "Hello, World!")
 
 ## Changelog
 
+### Version 0.1.4 (2026-07-16)
+
+#### Added
+- Support configuring SQLAlchemy `echo` via `LOG_LEVEL` or `DEBUG` setting
+
 ### Version 0.1.3 (2026-07-07)
 
 #### Added

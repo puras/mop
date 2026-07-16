@@ -8,7 +8,7 @@ from mop.conf import settings
 
 engine = create_engine(
     settings.DATABASE_URI,
-    echo=settings.DEBUG
+    echo=settings.LOG_LEVEL == "DEBUG"
 )
 
 SessionLocal = sessionmaker(
